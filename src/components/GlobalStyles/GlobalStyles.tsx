@@ -1,6 +1,4 @@
-import './reset.css';
-import './grid.css';
-import './global.css';
+import '@/scss/main.scss';
 
 export default function GlobalStyles({
   children
