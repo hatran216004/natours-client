@@ -1,0 +1,11 @@
+.backdrop {
+  background-image: url('@/assets/imgs/login_signup_bg.png');
+  height: calc(100vh - var(--height-header));
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

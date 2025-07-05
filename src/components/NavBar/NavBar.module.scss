@@ -1,0 +1,22 @@
+.nav {
+  &List {
+    display: flex;
+    align-items: center;
+  }
+
+  &Item {
+    display: block;
+    padding: 6px 21px;
+    color: var(--color-text-body);
+    text-align: center;
+    border-bottom: 1px solid transparent;
+    font-family: var(--font-body);
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 175%;
+
+    &:hover {
+      border-color: var(--color-text-body);
+    }
+  }
+}

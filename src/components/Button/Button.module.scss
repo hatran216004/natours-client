@@ -1,0 +1,50 @@
+.btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  text-wrap: nowrap;
+  font-family: var(--font-body);
+  text-transform: capitalize;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-weight: 600;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.primary {
+  color: #fff;
+  background: var(--color-button-primary);
+}
+
+.outline {
+  color: var(--color-text-heading);
+  border-color: var(--color-border-button-outline);
+  background: transparent;
+}
+
+.small {
+  padding: 0 16px;
+  height: 40px;
+  font-size: 1.4rem;
+  line-height: 171.429%;
+}
+
+.medium {
+  padding: 0 24px;
+  height: 44px;
+  font-size: 1.6rem;
+  line-height: 175%;
+}
+
+.large {
+  padding: 0 35px;
+  height: 60px;
+  font-size: 1.8rem;
+  line-height: 166.667%;
+}

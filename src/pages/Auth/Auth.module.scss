@@ -1,0 +1,84 @@
+.wrapper {
+  padding: 30px;
+  width: min(430px, 100%);
+  position: absolute;
+  background-color: #fff;
+  border-radius: 12px;
+}
+
+.title {
+  margin-bottom: 30px;
+  color: var(--color-text-heading);
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 135.714%;
+}
+
+.content {
+  max-height: 440px;
+  overflow-y: auto;
+}
+
+.socials {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  & button {
+    height: 50px;
+    color: var(--color-text-body);
+    font-weight: 400;
+  }
+}
+
+.separate {
+  margin: 20px 0;
+  display: block;
+  color: var(--color-text-body);
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 175%;
+}
+
+.forgotPassword {
+  margin-top: 12px;
+  display: block;
+  color: var(--color-text-body);
+  text-align: right;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 166.667%;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.form {
+  & button {
+    margin-top: 20px;
+  }
+}
+
+.noAccount {
+  margin-top: 20px;
+  text-align: center;
+  line-height: 166.667%;
+  font-size: 1.8rem;
+
+  & span {
+    color: var(--color-text-body);
+    font-weight: 400;
+  }
+
+  & a {
+    color: var(--color-text-heading);
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

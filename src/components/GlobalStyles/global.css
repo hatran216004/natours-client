@@ -1,6 +1,12 @@
 :root {
   --font-body: 'Manrope', sans-serif;
   --font-heading: 'Syne', sans-serif;
+  --color-text-heading: #191b1d;
+  --color-text-body: #4e5358;
+  --color-button-primary: #ff5b26;
+  --color-border-button-outline: rgba(25, 27, 29, 0.1);
+  --body-bg: #fff;
+  --height-header: 96px;
 }
 
 *,
@@ -19,6 +25,7 @@ body {
   font-family: var(--font-body);
   color: var(--text-color);
   background: var(--body-bg);
+  /* height: 10000px; */
 }
 
 h1,
@@ -34,6 +41,8 @@ input,
 label,
 textarea,
 select,
+li,
+a,
 button {
   font-family: inherit;
   font-size: inherit;
@@ -114,4 +123,12 @@ img {
   -webkit-line-clamp: var(--line-clamp, 2);
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.text-body {
+  color: var(--color-text-body);
+}
+
+.text-heading {
+  color: var(--color-text-heading);
 }
