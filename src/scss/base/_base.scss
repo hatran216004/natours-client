@@ -1,11 +1,6 @@
 :root {
   --font-body: 'Manrope', sans-serif;
   --font-heading: 'Syne', sans-serif;
-  --color-text-heading: #191b1d;
-  --color-text-body: #4e5358;
-  --color-button-primary: #ff5b26;
-  --color-border-button-outline: rgba(25, 27, 29, 0.1);
-  --body-bg: #fff;
   --height-header: 96px;
 }
 
@@ -25,7 +20,7 @@ body {
   font-family: var(--font-body);
   color: var(--text-color);
   background: var(--body-bg);
-  /* height: 10000px; */
+  height: 10000px;
 }
 
 h1,
@@ -131,4 +126,46 @@ img {
 
 .text-heading {
   color: var(--color-text-heading);
+}
+
+.heading-1 {
+  color: var(--color-text-heading);
+  font-weight: 700;
+  font-size: 7.2rem;
+  line-height: 100%;
+}
+
+.heading-2 {
+  color: var(--color-text-heading);
+  font-weight: 700;
+  font-size: 5.2rem;
+  line-height: 107.692%;
+}
+
+.heading-3 {
+  font-size: 3.8rem;
+  line-height: 115.789%;
+  color: var(--color-text-heading);
+  font-weight: 700;
+}
+
+.description-1 {
+  color: var(--color-text-body);
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 166.667%;
+}
+
+.description-2 {
+  color: var(--color-text-body);
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 175%;
+}
+
+.description-3 {
+  color: var(--color-text-body);
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 171.429%;
 }

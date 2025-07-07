@@ -1,10 +1,38 @@
+@use '@/scss/abstract';
+
 .nav {
+  @include abstract.screen(lg) {
+    padding: 42px 0;
+    position: fixed;
+    inset: 0 60% 0 0;
+    background-color: var(--bg-nav);
+    border-radius: 16px;
+    box-shadow: var(--bg-shadow-nav);
+    z-index: 10;
+    transition: transform 0.35s;
+  }
+
+  @include abstract.screen(md) {
+    inset: 0 40% 0 0;
+  }
+
   &List {
     display: flex;
     align-items: center;
+    height: 100%;
+
+    @include abstract.screen(lg) {
+      margin-top: 24px;
+      flex-direction: column;
+      align-items: start;
+    }
   }
 
   &Item {
+    width: 100%;
+  }
+
+  &Link {
     display: block;
     padding: 6px 21px;
     color: var(--color-text-body);
@@ -18,5 +46,45 @@
     &:hover {
       border-color: var(--color-text-body);
     }
+
+    @include abstract.screen(lg) {
+      padding: 10px 30px;
+      text-align: left;
+
+      &:hover {
+        border-color: transparent;
+        background-color: var(--bg-nav-link);
+      }
+    }
+  }
+
+  &Back {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    &:hover {
+      background-color: var(--bg-nav-link);
+    }
+  }
+}
+
+.show {
+  @include abstract.screen(lg) {
+    transform: translateX(0);
+  }
+}
+
+.hide {
+  @include abstract.screen(lg) {
+    transform: translateX(-100%);
   }
 }

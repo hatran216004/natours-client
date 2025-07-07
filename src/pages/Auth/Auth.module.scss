@@ -1,5 +1,5 @@
 .wrapper {
-  padding: 30px;
+  padding: 30px 0;
   width: min(430px, 100%);
   position: absolute;
   background-color: #fff;
@@ -16,6 +16,8 @@
 }
 
 .content {
+  margin: 0 15px;
+  padding: 0 15px;
   max-height: 440px;
   overflow-y: auto;
 }
@@ -25,10 +27,17 @@
   flex-direction: column;
   gap: 12px;
 
-  & button {
+  & .btn {
     height: 50px;
     color: var(--color-text-body);
     font-weight: 400;
+    transition: none;
+
+    &:hover {
+      background-color: rgba($color: #ccc, $alpha: 0.4);
+      color: inherit;
+      border-color: transparent;
+    }
   }
 }
 

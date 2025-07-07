@@ -1,9 +1,10 @@
 import styles from './Auth.module.scss';
 import clsx from 'clsx';
-import { Github } from 'lucide-react';
-import Button from '@/components/Button';
-import google_icon from '@/assets/icons/google.svg';
 import { Link } from 'react-router-dom';
+
+import { Github } from 'lucide-react';
+import google_icon from '@/assets/icons/google.svg';
+import Button from '@/components/Button';
 import Input from '@/components/Input';
 
 export default function Signup() {
@@ -12,11 +13,11 @@ export default function Signup() {
       <h2 className={clsx(styles.title)}>Sign Up</h2>
       <div className={clsx(styles.content)}>
         <div className={clsx(styles.socials)}>
-          <Button variant="outline">
+          <Button variant="outline" cssClass={clsx(styles.btn)} noHover>
             <img src={google_icon} alt="google icon" />
             Continue with Google
           </Button>
-          <Button variant="outline">
+          <Button variant="outline" cssClass={clsx(styles.btn)} noHover>
             <Github />
             Continue with Github
           </Button>

@@ -12,11 +12,11 @@ export default function Login() {
       <h2 className={clsx(styles.title)}>Sign In</h2>
       <div className={clsx(styles.content)}>
         <div className={clsx(styles.socials)}>
-          <Button variant="outline">
+          <Button variant="outline" cssClass={clsx(styles.btn)} noHover>
             <img src={google_icon} alt="google icon" />
             Continue with Google
           </Button>
-          <Button variant="outline">
+          <Button variant="outline" cssClass={clsx(styles.btn)} noHover>
             <Github />
             Continue with Github
           </Button>

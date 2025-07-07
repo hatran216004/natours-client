@@ -1,5 +1,7 @@
+@use '@/scss/abstract';
+
 .header {
-  background: #fff9e5;
+  background: var(--color-secondary);
 }
 
 .inner {
@@ -13,4 +15,15 @@
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.menuIcon {
+  display: none;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+
+  @include abstract.screen(lg) {
+    display: block;
+  }
 }

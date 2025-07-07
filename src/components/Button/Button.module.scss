@@ -9,23 +9,36 @@
   font-family: var(--font-body);
   text-transform: capitalize;
   border-radius: 999px;
-  border: 1px solid transparent;
   font-weight: 600;
+  transition: background-color, border-color, color;
+  transition-duration: 0.2s;
+  border: 1px solid transparent;
 
-  &:hover {
+  &:not(.primary):not(.noHover):hover {
+    background-color: var(--color-primary);
+    color: #fff;
+    border-color: transparent;
+  }
+
+  &.primary:hover {
     opacity: 0.8;
+  }
+
+  &.active {
+    color: #fff;
+    background: var(--color-primary);
   }
 }
 
 .primary {
   color: #fff;
-  background: var(--color-button-primary);
+  background: var(--color-primary);
 }
 
 .outline {
   color: var(--color-text-heading);
-  border-color: var(--color-border-button-outline);
   background: transparent;
+  border-color: var(--color-border-button-outline);
 }
 
 .small {

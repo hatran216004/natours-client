@@ -1,0 +1,13 @@
+html.dark {
+  --color-text-heading: #f2f2f2; /* Màu sáng cho tiêu đề */
+  --color-text-body: #c0c0c0; /* Màu xám nhạt dễ đọc cho nội dung */
+  --color-primary: #ff5b26; /* Giữ nguyên để duy trì điểm nhấn */
+  --color-secondary: #2c2b25; /* Phiên bản tối của #fff9e5 */
+  --color-border-button-outline: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Viền nhạt trên nền tối */
+  --body-bg: #121212; /* Nền tối chính */
+}
