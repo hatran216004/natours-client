@@ -8,6 +8,7 @@ import hero_media_1 from './hero_media_1.png';
 import hero_media_2 from './hero_media_2.png';
 import hero_media_3 from './hero_media_3.png';
 import popular_tour_mock from './popular_tour_mock.png';
+import benefit from './benefit.png';
 
 const image = {
   sitemark,
@@ -19,7 +20,8 @@ const image = {
   hero_media_1,
   hero_media_2,
   hero_media_3,
-  popular_tour_mock
+  popular_tour_mock,
+  benefit
 };
 
 export default image;

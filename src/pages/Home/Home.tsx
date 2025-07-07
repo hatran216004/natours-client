@@ -6,6 +6,7 @@ import Services from './components/Services';
 import Search from '@/components/Search';
 import PopularTours from './components/PopularTours';
 import Statistical from './components/Statistical';
+import TravelBenefits from './components/TravelBenefits';
 
 export default function Home() {
   return (
@@ -19,6 +20,9 @@ export default function Home() {
         <PopularTours />
       </Container>
       <Statistical />
+      <Container>
+        <TravelBenefits />
+      </Container>
     </>
   );
 }
