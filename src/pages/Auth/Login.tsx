@@ -29,7 +29,9 @@ export default function Login() {
           <Link to="/" className={clsx(styles.forgotPassword)}>
             Forgot password?
           </Link>
-          <Button size="large">Sign In</Button>
+          <Button size="large" cssClass={clsx(styles.btnSubmit)}>
+            Sign In
+          </Button>
         </form>
       </div>
       <div className={clsx(styles.noAccount)}>

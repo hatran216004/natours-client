@@ -22,6 +22,7 @@
   width: 24px;
   height: 24px;
   cursor: pointer;
+  color: var(--color-text-heading);
 
   @include abstract.screen(lg) {
     display: block;

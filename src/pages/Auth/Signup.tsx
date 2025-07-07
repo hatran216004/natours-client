@@ -33,7 +33,9 @@ export default function Signup() {
             type="password"
           />
 
-          <Button size="large">Sign Up</Button>
+          <Button size="large" cssClass={clsx(styles.btnSubmit)}>
+            Sign Up
+          </Button>
         </form>
       </div>
       <div className={clsx(styles.noAccount)}>

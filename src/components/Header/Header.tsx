@@ -7,6 +7,7 @@ import Button from '@/components/Button';
 import Logo from '@/components/Logo';
 import { Menu } from 'lucide-react';
 import { useState } from 'react';
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
 
 export default function Header() {
   const [isShowNav, setIsShowNav] = useState(false);
@@ -28,6 +29,7 @@ export default function Header() {
           <Logo />
           <NavBar isShowNav={isShowNav} onShowNav={setIsShowNav} />
           <div className={clsx(styles.actions)}>
+            <ThemeToggle />
             <Button
               variant="outline"
               onClick={() => navigate('/login')}

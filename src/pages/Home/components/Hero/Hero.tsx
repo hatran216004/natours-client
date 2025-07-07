@@ -9,21 +9,21 @@ export default function Hero() {
       <Container>
         <div className="row row-cols-2 row-cols-xxl-1 gx-3 gy-5">
           <div className="col">
-            <div className={clsx(styles.heroContent)}>
+            <div className={clsx(styles.content)}>
               <div className={clsx(styles.heading)}>
-                <h1 className={clsx('heading-1', styles.heroTitle)}>
+                <h1 className={clsx('heading-1', styles.title)}>
                   Let’s make your best trip ever
                 </h1>
                 <img src={image.hero_content_decor} alt="" />
               </div>
-              <p className={clsx('description-1', styles.heroDesc)}>
+              <p className={clsx('description-1', styles.desctiption)}>
                 Create a fully customized day-by-day itinerary for free. Imagine
                 checking one place for your travel details and getting a heads
                 up as things happen throughout your trip
               </p>
-              <div className={clsx(styles.heroContentBottom)}>
-                <p className={clsx(styles.heroSubTitle)}>As featured in</p>
-                <div className={clsx(styles.heroContentFeatured)}>
+              <div className={clsx(styles.bottom)}>
+                <p className={clsx(styles.subTitle)}>As featured in</p>
+                <div className={clsx(styles.featured)}>
                   <img src={image.sitemark} alt="sitemark" />
                   <img src={image.trace} alt="trace" />
                   <img src={image.orbitc} alt="orbitc" />
@@ -34,9 +34,9 @@ export default function Hero() {
             </div>
           </div>
           <div className="col">
-            <div className={clsx(styles.heroMedia)}>
+            <div className={clsx(styles.media)}>
               <svg
-                className={clsx('d-md-none', styles.heroMediaDecor)}
+                className={clsx('d-md-none', styles.decorate)}
                 width="770"
                 height="388"
                 viewBox="0 0 770 388"
@@ -283,11 +283,11 @@ export default function Hero() {
                 </g>
               </svg>
 
-              <div className={clsx(styles.heroMediaLeft)}>
+              <div className={clsx(styles.mediaLeft)}>
                 <img src={image.hero_media_1} alt="" />
                 <img src={image.hero_media_2} alt="" />
               </div>
-              <div className={clsx(styles.heroMediaRight)}>
+              <div className={clsx(styles.mediaRight)}>
                 <img src={image.hero_media_3} alt="" />
               </div>
             </div>

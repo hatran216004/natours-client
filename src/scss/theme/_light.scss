@@ -1,4 +1,5 @@
-html {
+html.light {
+  --color-logo: #191b1d;
   --color-text-heading: #191b1d;
   --color-text-body: #4e5358;
   --color-primary: #ff5b26;
@@ -12,4 +13,6 @@ html {
   --shadow-card: 0px 20px 90px 0px rgba(25, 27, 29, 0.1);
   --bg-color-searchbar: #fff;
   --shadow-searchbar: 0px 20px 90px 0px rgba(157, 110, 0, 0.1);
+  --bg-theme: #fbedb6;
+  --bg-toggle-theme: #f4ca25;
 }

@@ -4,6 +4,8 @@ import Container from '@/components/Container';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import Search from '@/components/Search';
+import PopularTours from './components/PopularTours';
+import Statistical from './components/Statistical';
 
 export default function Home() {
   return (
@@ -14,7 +16,9 @@ export default function Home() {
           <Search />
         </div>
         <Services />
+        <PopularTours />
       </Container>
+      <Statistical />
     </>
   );
 }

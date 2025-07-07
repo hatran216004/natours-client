@@ -1,0 +1,42 @@
+.statistical {
+  position: relative;
+  margin-top: 120px;
+  padding: 70px 0;
+  background-color: var(--color-secondary);
+}
+
+.wrapper {
+}
+
+.heading {
+  margin-bottom: 38px;
+  width: min(670px, 100%);
+  text-align: left;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+
+  & span:nth-child(1) {
+    color: var(--color-primary);
+    font-size: 7.2rem;
+    font-weight: 700;
+    line-height: 100%;
+  }
+}
+
+.icon {
+  position: absolute;
+
+  &:nth-child(1) {
+    top: 50%;
+    left: 60px;
+  }
+
+  &:nth-child(2) {
+    top: 84px;
+    right: 155px;
+  }
+}

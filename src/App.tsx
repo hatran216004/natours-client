@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Blog from './pages/Blog';
 import About from './pages/About';
 import Destinations from './pages/Destinations';
+import Tours from './pages/Tours';
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/about" element={<About />} />
             <Route path="/destinations" element={<Destinations />} />
+            <Route path="/tours" element={<Tours />} />
           </Route>
           <Route element={<AuthLayout />}>
             <Route path="/login" element={<Login />} />

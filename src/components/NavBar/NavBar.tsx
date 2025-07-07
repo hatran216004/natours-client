@@ -10,35 +10,41 @@ type NavBarType = {
 
 export default function NavBar({ isShowNav, onShowNav }: NavBarType) {
   return (
-    <nav className={clsx(styles.nav, isShowNav ? styles.show : styles.hide)}>
-      <button
-        className={clsx(styles.navBack, 'd-none d-lg-flex')}
-        onClick={() => onShowNav?.((prev) => !prev)}
-      >
-        <ArrowLeft />
-      </button>
-      <ul className={clsx(styles.navList)} onClick={() => onShowNav?.(false)}>
-        <li className={clsx(styles.navItem)}>
-          <Link to="/destinations" className={clsx(styles.navLink)}>
-            Destinations
-          </Link>
-        </li>
-        <li className={clsx(styles.navItem)}>
-          <Link to="/about" className={clsx(styles.navLink)}>
-            About
-          </Link>
-        </li>
-        <li className={clsx(styles.navItem)}>
-          <Link to="/blog" className={clsx(styles.navLink)}>
-            Blog
-          </Link>
-        </li>
-        <li className={clsx(styles.navItem)}>
-          <Link to="/" className={clsx(styles.navLink)}>
-            Page
-          </Link>
-        </li>
-      </ul>
-    </nav>
+    <>
+      <nav className={clsx(styles.nav, isShowNav ? styles.show : styles.hide)}>
+        <button
+          className={clsx(styles.navBack, 'd-none d-lg-flex')}
+          onClick={() => onShowNav?.((prev) => !prev)}
+        >
+          <ArrowLeft />
+        </button>
+        <ul className={clsx(styles.navList)} onClick={() => onShowNav?.(false)}>
+          <li className={clsx(styles.navItem)}>
+            <Link to="/destinations" className={clsx(styles.navLink)}>
+              Destinations
+            </Link>
+          </li>
+          <li className={clsx(styles.navItem)}>
+            <Link to="/about" className={clsx(styles.navLink)}>
+              About
+            </Link>
+          </li>
+          <li className={clsx(styles.navItem)}>
+            <Link to="/blog" className={clsx(styles.navLink)}>
+              Blog
+            </Link>
+          </li>
+          <li className={clsx(styles.navItem)}>
+            <Link to="/tours" className={clsx(styles.navLink)}>
+              Tours
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      <div
+        className={clsx(styles.overlay)}
+        onClick={() => onShowNav?.(false)}
+      ></div>
+    </>
   );
 }

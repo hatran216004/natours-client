@@ -8,7 +8,7 @@
 
 .title {
   margin-bottom: 30px;
-  color: var(--color-text-heading);
+  color: #191b1d;
   text-align: center;
   font-size: 2.8rem;
   font-weight: 700;
@@ -29,9 +29,10 @@
 
   & .btn {
     height: 50px;
-    color: var(--color-text-body);
+    color: #191b1d;
     font-weight: 400;
     transition: none;
+    border-color: rgba(25, 27, 29, 0.15);
 
     &:hover {
       background-color: rgba($color: #ccc, $alpha: 0.4);
@@ -90,4 +91,8 @@
       text-decoration: underline;
     }
   }
+}
+
+.btnSubmit {
+  width: 100%;
 }
