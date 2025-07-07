@@ -22,17 +22,19 @@
   }
 }
 
-.heroContent {
+.heading {
   position: relative;
 
-  &Decor {
+  & img {
     position: absolute;
-    top: 186px;
+    bottom: 0;
     left: -35px;
     width: 240px;
     height: 32px;
   }
+}
 
+.heroContent {
   &Bottom {
     margin-top: 38px;
   }
@@ -56,6 +58,7 @@
   column-gap: 20px;
 
   &Decor {
+    width: 770px;
     height: 388px;
     position: absolute;
     top: 0;

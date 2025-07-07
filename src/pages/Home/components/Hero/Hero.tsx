@@ -7,17 +7,15 @@ export default function Hero() {
   return (
     <section className={clsx(styles.hero)}>
       <Container>
-        <div className="row row-cols-2 row-cols-lg-1 gx-3 gy-5">
+        <div className="row row-cols-2 row-cols-xxl-1 gx-3 gy-5">
           <div className="col">
             <div className={clsx(styles.heroContent)}>
-              <img
-                src={image.hero_content_decor}
-                alt=""
-                className={clsx(styles.heroContentDecor)}
-              />
-              <h1 className={clsx('heading-1', styles.heroTitle)}>
-                Let’s make your best trip ever
-              </h1>
+              <div className={clsx(styles.heading)}>
+                <h1 className={clsx('heading-1', styles.heroTitle)}>
+                  Let’s make your best trip ever
+                </h1>
+                <img src={image.hero_content_decor} alt="" />
+              </div>
               <p className={clsx('description-1', styles.heroDesc)}>
                 Create a fully customized day-by-day itinerary for free. Imagine
                 checking one place for your travel details and getting a heads
