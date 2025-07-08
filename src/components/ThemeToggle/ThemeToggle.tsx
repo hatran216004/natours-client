@@ -31,10 +31,13 @@ export default function ThemeToggle() {
 
   return (
     <div
-      className={clsx(styles.theme, theme === 'dark' && styles.dark)}
+      className={clsx(
+        styles.theme,
+        theme === 'dark' ? styles.dark : styles.light
+      )}
       onClick={handleTheme}
     >
-      <span className={styles.toggleIcon}>
+      <span className={clsx(styles.toggleIcon)}>
         {theme === 'light' ? <Sun /> : <Moon />}
       </span>
     </div>

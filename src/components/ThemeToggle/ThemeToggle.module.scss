@@ -5,24 +5,36 @@
   background-color: var(--bg-theme);
   position: relative;
   cursor: pointer;
+  user-select: none;
 }
 
 .toggleIcon {
-  position: absolute;
-  top: 50%;
-  left: 2px;
   width: 28px;
   height: 28px;
-  transform: translateY(-50%) translateX(0);
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  color: #fff;
   border-radius: 50%;
   background-color: var(--bg-toggle-theme);
-  color: #fff;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s;
+
+  transition: left, right, transform;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+.theme.light .toggleIcon {
+  left: 0;
 }
 
 .theme.dark .toggleIcon {
-  transform: translateY(-50%) translateX(32px);
+  right: 0;
+  left: 100%;
+  transform: translate(-100%, -50%);
 }

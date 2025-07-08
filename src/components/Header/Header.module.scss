@@ -1,5 +1,11 @@
 @use '@/scss/abstract';
 
+.sticky {
+  position: sticky;
+  top: -18px;
+  z-index: 2;
+}
+
 .header {
   background: var(--color-secondary);
 }

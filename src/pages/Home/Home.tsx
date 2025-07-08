@@ -7,6 +7,7 @@ import Search from '@/components/Search';
 import PopularTours from './components/PopularTours';
 import Statistical from './components/Statistical';
 import TravelBenefits from './components/TravelBenefits';
+import Reviews from './components/Reviews';
 
 export default function Home() {
   return (
@@ -22,6 +23,10 @@ export default function Home() {
       <Statistical />
       <Container>
         <TravelBenefits />
+        <Reviews />
+        {/* Blogs */}
+        {/* Travel matter */}
+        {/* Footer */}
       </Container>
     </>
   );
