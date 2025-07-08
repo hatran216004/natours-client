@@ -26,7 +26,7 @@ export default function Header() {
           >
             <Menu />
           </button>
-          <Logo />
+          <Logo className="d-sm-none" />
           <NavBar isShowNav={isShowNav} onShowNav={setIsShowNav} />
           <div className={clsx(styles.actions)}>
             <ThemeToggle />

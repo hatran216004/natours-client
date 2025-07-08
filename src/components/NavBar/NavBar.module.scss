@@ -6,7 +6,8 @@
     position: fixed;
     inset: 0 60% 0 0;
     background-color: var(--bg-nav);
-    border-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
     box-shadow: var(--bg-shadow-nav);
     z-index: 11;
     transition: transform 0.35s;
@@ -62,6 +63,7 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
+    color: var(--color-text-heading);
 
     display: flex;
     align-items: center;

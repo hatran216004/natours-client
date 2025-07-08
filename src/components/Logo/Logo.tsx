@@ -2,9 +2,9 @@ import styles from './Logo.module.scss';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 
-export default function Logo() {
+export default function Logo({ className = '' }: { className?: string }) {
   return (
-    <Link to="/" className={clsx(styles.logo)}>
+    <Link to="/" className={clsx(styles.logo, className)}>
       <svg
         width="34"
         height="34"

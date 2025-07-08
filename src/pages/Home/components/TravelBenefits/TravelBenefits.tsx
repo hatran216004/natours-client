@@ -6,7 +6,7 @@ export default function TravelBenefits() {
   return (
     <section className={clsx(styles.benefit)}>
       <svg
-        className={clsx(styles.decorate)}
+        className={clsx(styles.decorate, 'd-lg-none')}
         width={770}
         height={391}
         viewBox="0 0 770 391"
