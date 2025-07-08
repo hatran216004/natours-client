@@ -5,11 +5,14 @@ import clsx from 'clsx';
 export default function Reviews() {
   return (
     <section>
-      <Carousel items={1} controls loop>
+      <Carousel items={3} controls loop>
         {Array(6)
           .fill(0)
           .map((_, index) => (
-            <Slide key={index} className={clsx(styles.slideItem)}>
+            <Slide
+              key={index}
+              className={clsx(styles[`slide-${index + 1}`], styles.slide)}
+            >
               slide {index + 1}
             </Slide>
           ))}

@@ -1,27 +1,27 @@
-.slideItem {
+.slide {
   padding: 30px;
+}
 
-  &:nth-child(1) {
-    background-color: violet;
-  }
+.slide-1 {
+  background-color: violet;
+}
 
-  &:nth-child(2) {
-    background-color: bisque;
-  }
+.slide-2 {
+  background-color: bisque;
+}
 
-  &:nth-child(3) {
-    background-color: chocolate;
-  }
+.slide-3 {
+  background-color: chocolate;
+}
 
-  &:nth-child(4) {
-    background-color: burlywood;
-  }
+.slide-4 {
+  background-color: burlywood;
+}
 
-  &:nth-child(5) {
-    background-color: olivedrab;
-  }
+.slide-5 {
+  background-color: olivedrab;
+}
 
-  &:nth-child(6) {
-    background-color: orange;
-  }
+.slide-6 {
+  background-color: orange;
 }
