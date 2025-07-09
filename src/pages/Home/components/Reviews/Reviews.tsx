@@ -5,7 +5,7 @@ import clsx from 'clsx';
 export default function Reviews() {
   return (
     <section>
-      <Carousel items={3} controls>
+      <Carousel items={1} controls>
         {Array(6)
           .fill(0)
           .map((_, index) => (

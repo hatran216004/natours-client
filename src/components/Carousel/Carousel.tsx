@@ -1,11 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from './Carousel.module.scss';
 import clsx from 'clsx';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+
 import {
   Children,
   cloneElement,
   createContext,
   isValidElement,
+  ReactElement,
   RefObject,
   useCallback,
   useContext,
@@ -22,8 +24,13 @@ type ContextValueType = {
   currentIndex: number;
   originalSlides: React.ReactNode[];
   slides: React.ReactNode[];
-  slideBy: number;
+  slideSize: number;
+  pageIndex: number;
+  prevButton: React.ReactElement | null;
+  nextButton: React.ReactElement | null;
+  controlsText: [string, string];
   setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
+  setPageIndex: React.Dispatch<React.SetStateAction<number>>;
   updatePosition: () => void;
   handleMoveSlide: (step: number) => void;
 };
@@ -37,10 +44,10 @@ type CarouselType = {
   autoplay?: boolean;
   autoplayInterval?: number;
   autoplayHoverPause?: boolean;
-  controlsText?: string[];
-  prevButton?: null;
-  nextButton?: null;
-  slideBy?: number;
+  controlsText?: [string, string];
+  prevButton?: React.ReactElement | null;
+  nextButton?: React.ReactElement | null;
+  slideBy?: 'page' | number;
   children?: React.ReactNode;
 };
 
@@ -48,21 +55,28 @@ const CarouselContext = createContext<ContextValueType | null>(null);
 
 export function Carousel({
   controls = false,
-  nav = false,
+  controlsText = ['<', '>'],
+  nav = true,
   items = 1,
   loop = true,
-  speed = 300,
   autoplay = false,
   autoplayHoverPause = false,
+  speed = 300,
   autoplayInterval = 3000,
   slideBy = 1,
+  prevButton = null,
+  nextButton = null,
   children
 }: CarouselType) {
   const [currentIndex, setCurrentIndex] = useState(loop ? items : 0);
+  const [pageIndex, setPageIndex] = useState(0);
+
   const trackRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
+
   const isInstant = useRef(true);
   const isAnimating = useRef(false);
+
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -70,12 +84,22 @@ export function Carousel({
   const slidesCount = Children.count(children);
   let slides: React.ReactNode[] = [...originalSlides];
 
+  const slideSize = slideBy === 'page' ? items : slideBy;
+
   if (loop) {
     const cloneHead = handleCloneSlide('clone-head');
     const cloneTail = handleCloneSlide('clone-tail');
     slides = [...cloneHead, ...originalSlides, ...cloneTail];
   }
   const maxIndex = slides.length - items;
+
+  const updateNav = () => {
+    let realIndex = currentIndex;
+    if (loop) {
+      realIndex = (currentIndex - items + slidesCount) % slidesCount;
+    }
+    setPageIndex(Math.floor(realIndex / items));
+  };
 
   const updatePosition = (instant = false) => {
     if (!trackRef.current) return;
@@ -85,6 +109,8 @@ export function Carousel({
       : `transform ${speed}ms`;
     const offset = -(currentIndex * (100 / items));
     trackRef.current.style.transform = `translateX(${offset}%)`;
+
+    if (nav && !instant) updateNav();
   };
 
   const handleMoveSlide = useCallback(
@@ -92,29 +118,29 @@ export function Carousel({
       if (!trackRef.current || isAnimating.current) return;
       isAnimating.current = true;
 
-      // Đảm bảo rằng newCurrentIndex mới không nhỏ hơn 0 và không vượt quá maxIndex
-      const newCurrentIndex = Math.min(
-        Math.max(currentIndex + step, 0),
-        maxIndex
-      );
+      setCurrentIndex((preIndex) => {
+        // Đảm bảo rằng newCurrentIndex mới không nhỏ hơn 0 và không vượt quá maxIndex
+        const newIndex = Math.min(Math.max(preIndex + step, 0), maxIndex);
 
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
-      timeoutRef.current = setTimeout(() => {
-        if (loop) {
-          if (newCurrentIndex <= 0) {
-            setCurrentIndex(maxIndex - items);
-            isInstant.current = true;
-          } else if (newCurrentIndex >= maxIndex) {
-            setCurrentIndex(items);
-            isInstant.current = true;
+        timeoutRef.current = setTimeout(() => {
+          if (loop) {
+            if (newIndex <= 0) {
+              setCurrentIndex(maxIndex - items);
+              isInstant.current = true;
+            } else if (newIndex >= maxIndex) {
+              setCurrentIndex(items);
+              isInstant.current = true;
+            }
           }
-        }
-        isAnimating.current = false;
-      }, speed);
-      setCurrentIndex(newCurrentIndex);
+          isAnimating.current = false;
+        }, speed);
+
+        return newIndex;
+      });
     },
-    [currentIndex, maxIndex, items, loop, speed]
+    [maxIndex, items, loop, speed]
   );
 
   function handleCloneSlide(keyPrefix: string) {
@@ -139,9 +165,9 @@ export function Carousel({
     if (intervalRef.current) clearInterval(intervalRef.current);
 
     intervalRef.current = setInterval(() => {
-      handleMoveSlide(slideBy);
+      handleMoveSlide(slideSize);
     }, autoplayInterval);
-  }, [autoplayInterval, slideBy, handleMoveSlide]);
+  }, [autoplayInterval, slideSize, handleMoveSlide]);
 
   const stopAutoplay = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);
@@ -192,19 +218,26 @@ export function Carousel({
         slides,
         originalSlides,
         currentIndex,
-        slideBy,
+        slideSize,
+        pageIndex,
+        controlsText,
+        prevButton,
+        nextButton,
         setCurrentIndex,
+        setPageIndex,
         updatePosition,
         handleMoveSlide
       }}
     >
-      <div ref={containerRef} className={clsx(styles.wrapper)}>
-        <div className={clsx(styles.inner)}>
-          <SlideTrack />
+      <div ref={containerRef}>
+        <div className={clsx(styles.wrapper)}>
+          <div className={clsx(styles.inner)}>
+            <SlideTrack />
+          </div>
+          {controls && <Controls />}
         </div>
-        {controls && <Controls />}
+        {nav && <DotsNav />}
       </div>
-      {nav && <DotsNav />}
     </CarouselContext.Provider>
   );
 }
@@ -237,27 +270,64 @@ export function Slide({
 }
 
 function Controls() {
-  const { slideBy, handleMoveSlide } = useCarousel();
+  const { slideSize, controlsText, prevButton, nextButton, handleMoveSlide } =
+    useCarousel();
+
   return (
     <>
-      <button
-        onClick={() => handleMoveSlide(-slideBy)}
-        className={clsx(styles.prev)}
-      >
-        <ChevronLeft />
-      </button>
-      <button
-        onClick={() => handleMoveSlide(slideBy)}
-        className={clsx(styles.next)}
-      >
-        <ChevronRight />
-      </button>
+      {prevButton && isValidElement(prevButton) ? (
+        cloneElement(prevButton as ReactElement<any>, {
+          ...(prevButton.props as object),
+          onClick: () => handleMoveSlide(-slideSize)
+        })
+      ) : (
+        <button
+          onClick={() => handleMoveSlide(-slideSize)}
+          className={clsx(styles.prev)}
+        >
+          {controlsText[0]}
+        </button>
+      )}
+      {nextButton && isValidElement(nextButton) ? (
+        cloneElement(nextButton as ReactElement<any>, {
+          ...(nextButton.props as object),
+          onClick: () => handleMoveSlide(slideSize)
+        })
+      ) : (
+        <button
+          onClick={() => handleMoveSlide(slideSize)}
+          className={clsx(styles.next)}
+        >
+          {controlsText[1]}
+        </button>
+      )}
     </>
   );
 }
 
 function DotsNav() {
-  return <div>DotsNav</div>;
+  const { slidesCount, items, pageIndex, loop, setCurrentIndex } =
+    useCarousel();
+  const pageCount = Math.ceil(slidesCount / items);
+
+  const handleClick = (index: number) => {
+    const newIndex = loop ? index * items + items : index * items;
+    setCurrentIndex(newIndex);
+  };
+
+  return (
+    <ul className={clsx(styles.nav)}>
+      {Array(pageCount)
+        .fill(0)
+        .map((_, index) => (
+          <li key={index} onClick={() => handleClick(index)}>
+            <button
+              className={clsx(styles.dot, index === pageIndex && styles.active)}
+            ></button>
+          </li>
+        ))}
+    </ul>
+  );
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
